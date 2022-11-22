@@ -192,18 +192,42 @@ class DetailPage extends StatelessWidget {
                           height: 50,
                           width: MediaQuery.of(context).size.width,
                           child: RaisedButton(
-                            onPressed: () {
-                              if (int.tryParse(space.phone) == null) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => ErrorPage()),
+                            onPressed: () => showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text('Konfirmasi',
+                                    style: itemTitlePageText),
+                                content: Text(
+                                  'Apakah anda yakin ingin menghubungi pemilik kos ?',
+                                  style: itemTitleText,
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: Text('Tidak', style: itemTitleText),
                                   ),
-                                );
-                              } else {
-                                launchUrl('tel:${int.tryParse(space.phone)}');
-                              }
-                            },
+                                  TextButton(
+                                    onPressed: () {
+                                      if (int.tryParse(space.phone) == null) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: ((context) => ErrorPage()),
+                                          ),
+                                        );
+                                      } else {
+                                        launchUrl(
+                                            'tel:${int.tryParse(space.phone)}');
+                                      }
+                                    },
+                                    child: Text('Iya', style: itemTitleText),
+                                  ),
+                                ],
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                              ),
+                            ),
                             color: purpleColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(17),
