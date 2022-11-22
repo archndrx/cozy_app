@@ -28,6 +28,43 @@ class DetailPage extends StatelessWidget {
       }
     }
 
+    Future<void> showConfirmation() async {
+      return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: Text('Konfirmasi', style: itemTitlePageText),
+          content: Text(
+            'Apakah anda yakin ingin menghubungi pemilik kos ?',
+            style: itemTitleText,
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Tidak', style: itemTitleText),
+            ),
+            TextButton(
+              onPressed: () {
+                if (int.tryParse(space.phone) == null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => ErrorPage()),
+                    ),
+                  );
+                } else {
+                  launchUrl('tel:${int.tryParse(space.phone)}');
+                }
+              },
+              child: Text('Iya', style: itemTitleText),
+            ),
+          ],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -192,42 +229,7 @@ class DetailPage extends StatelessWidget {
                           height: 50,
                           width: MediaQuery.of(context).size.width,
                           child: RaisedButton(
-                            onPressed: () => showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: Text('Konfirmasi',
-                                    style: itemTitlePageText),
-                                content: Text(
-                                  'Apakah anda yakin ingin menghubungi pemilik kos ?',
-                                  style: itemTitleText,
-                                ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Text('Tidak', style: itemTitleText),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      if (int.tryParse(space.phone) == null) {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: ((context) => ErrorPage()),
-                                          ),
-                                        );
-                                      } else {
-                                        launchUrl(
-                                            'tel:${int.tryParse(space.phone)}');
-                                      }
-                                    },
-                                    child: Text('Iya', style: itemTitleText),
-                                  ),
-                                ],
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                            ),
+                            onPressed: showConfirmation,
                             color: purpleColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(17),
