@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634941888398",
+    "project_id": "cozy-app-becad",
+    "storage_bucket": "cozy-app-becad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634941888398:android:a71b39e090176a98e636df",
+        "android_client_info": {
+          "package_name": "com.example.cozy_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634941888398-8ikuu4g3l5i3dj8uncm6ju0b89npt2c5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUUDhvr410DMtQlZGHcnFJ9pnC1K7Dk58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634941888398-8ikuu4g3l5i3dj8uncm6ju0b89npt2c5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
