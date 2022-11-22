@@ -45,6 +45,7 @@ class DetailPage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 if (int.tryParse(space.phone) == null) {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -52,6 +53,7 @@ class DetailPage extends StatelessWidget {
                     ),
                   );
                 } else {
+                  Navigator.pop(context);
                   launchUrl('tel:${int.tryParse(space.phone)}');
                 }
               },
