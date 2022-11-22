@@ -241,16 +241,39 @@ class DetailPage extends StatelessWidget {
                       height: 40,
                     ),
                   ),
-                  Image.asset(
-                    'image/btn_wishlist.png',
-                    width: 40,
-                    height: 40,
-                  )
+                  FavoriteButton(),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  FavoriteButton({Key? key}) : super(key: key);
+
+  @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundColor: Colors.white,
+      child: IconButton(
+        icon: Image.asset(
+            isFavorite ? 'asset/Icon_love_color.png' : "asset/Icon_love.png"),
+        onPressed: () {
+          setState(() {
+            isFavorite = !isFavorite;
+          });
+        },
       ),
     );
   }
